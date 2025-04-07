@@ -1,5 +1,7 @@
 <?php
 // admin/index.php
+
+require_once "../auth_check.php";
 require_once "../config/db.php";
 require_once "../includes/functions.php";
 
@@ -25,31 +27,12 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="../index.php">Hệ thống khảo sát</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./index.php">Quản trị</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <?php include "../includes/header.php"; ?>
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Quản lý khảo sát</h1>
             <a href="./create-survey.php" class="btn btn-success">Tạo khảo sát mới</a>
         </div>
-
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">

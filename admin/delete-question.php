@@ -1,5 +1,6 @@
 <?php
 // admin/delete_question.php
+require_once "../auth_check.php";
 require_once "../config/db.php";
 
 session_start();
@@ -75,5 +76,5 @@ try {
     $_SESSION['message'] = "Có lỗi xảy ra: " . $e->getMessage();
 }
 
-header("Location:http://localhost:8080/survey_system/admin/edit_survey.php?id=$survey_id");
+header("Location:../admin/edit_survey.php?id=$survey_id");
 exit;

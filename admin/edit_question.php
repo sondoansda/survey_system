@@ -1,5 +1,6 @@
 <?php
 // admin/edit_question.php
+require_once "../auth_check.php";
 require_once "../config/db.php";
 
 $question_id = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "i", $question_id);
         mysqli_stmt_execute($stmt);
         $question = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
-        header("Location: http://localhost:8080/survey_system/admin/edit_survey.php?id=" . $question_id);
+        header("Location: /survey_system/admin/edit_survey.php?id=" . $question_id);
         exit();
     }
 }
