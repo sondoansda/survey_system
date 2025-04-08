@@ -1,5 +1,7 @@
 <?php
+require_once "../auth_check.php";
 require_once "../config/db.php";
+
 session_start();
 
 // Check if the database connection is successful

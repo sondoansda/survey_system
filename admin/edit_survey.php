@@ -1,5 +1,6 @@
 <?php
 // admin/edit_survey.php
+require_once "../auth_check.php";
 require_once "../config/db.php";
 require_once "../includes/functions.php";
 
@@ -373,32 +374,50 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
             // Xử lý lấy các tùy chọn cho câu hỏi điều kiện
             const parentQuestionSelect = document.getElementById('parent_question_id');
             const parentOptionSelect = document.getElementById('parent_option_id');
+            const allOptions = {};
+            
+            
+            // Lưu trữ dữ liệu tùy chọn
+            <?php
+            $options_data = array();
+            mysqli_data_seek($questions_dropdown, 0);
+            while ($question = mysqli_fetch_assoc($questions_dropdown)) {
+                // Lấy tùy chọn cho mỗi câu hỏi
+                $options_sql = "SELECT id, content FROM options WHERE question_id = ? ORDER BY order_num";
+                $options_stmt = mysqli_prepare($conn, $options_sql);
+                mysqli_stmt_bind_param($options_stmt, "i", $question['id']);
+                mysqli_stmt_execute($options_stmt);
+                $options_result = mysqli_stmt_get_result($options_stmt);
+                
+                $question_options = array();
+                while ($option = mysqli_fetch_assoc($options_result)) {
+                    $question_options[] = array(
+                        'id' => $option['id'],
+                        'content' => $option['content']
+                    );
+                }
+                
+                echo "allOptions[" . $question['id'] . "] = " . json_encode($question_options) . ";\n";
+            }
+            ?>
 
             parentQuestionSelect.addEventListener('change', function() {
                 const questionId = this.value;
-
-                if (questionId) {
-                    // Lấy danh sách các tùy chọn của câu hỏi được chọn
-                    fetch(`get_options.php?question_id=${questionId}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            parentOptionSelect.innerHTML = '<option value="">Chọn lựa chọn</option>';
-
-                            data.forEach(option => {
-                                const optionElement = document.createElement('option');
-                                optionElement.value = option.id;
-                                optionElement.textContent = option.content;
-                                parentOptionSelect.appendChild(optionElement);
-                            });
-
-                            parentOptionSelect.disabled = false;
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('Có lỗi xảy ra khi lấy danh sách tùy chọn.');
-                        });
+                
+                // Xóa các option cũ
+                parentOptionSelect.innerHTML = '<option value="">Chọn lựa chọn</option>';
+                
+                if (questionId && allOptions[questionId]) {
+                    // Thêm các option mới
+                    allOptions[questionId].forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.id;
+                        optionElement.textContent = option.content;
+                        parentOptionSelect.appendChild(optionElement);
+                    });
+                    
+                    parentOptionSelect.disabled = false;
                 } else {
-                    parentOptionSelect.innerHTML = '<option value="">Chọn lựa chọn</option>';
                     parentOptionSelect.disabled = true;
                 }
             });

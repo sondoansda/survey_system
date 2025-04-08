@@ -1,5 +1,6 @@
 <?php
 // admin/edit_question.php
+require_once "../auth_check.php";
 require_once "../config/db.php";
 
 $question_id = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;

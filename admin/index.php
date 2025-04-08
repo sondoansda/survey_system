@@ -1,5 +1,7 @@
 <?php
 // admin/index.php
+
+require_once "../auth_check.php";
 require_once "../config/db.php";
 require_once "../includes/functions.php";
 
@@ -38,6 +40,9 @@ $result = mysqli_query($conn, $sql);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="./index.php">Quản trị</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../account/logout.php">Đăng xuất (<?php echo htmlspecialchars($_SESSION['admin_username']); ?>)</a>
                     </li>
                 </ul>
             </div>
