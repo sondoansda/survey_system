@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 // admin/create_survey.php
 require_once "../auth_check.php";
@@ -114,3 +115,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+=======
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c

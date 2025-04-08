@@ -27,6 +27,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Hệ thống khảo sát</a>
@@ -49,12 +50,14 @@ $result = mysqli_query($conn, $sql);
         </div>
     </nav>
 
+=======
+    <?php include "../includes/header.php"; ?>
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Quản lý khảo sát</h1>
             <a href="./create-survey.php" class="btn btn-success">Tạo khảo sát mới</a>
         </div>
-
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">

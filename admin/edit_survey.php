@@ -118,24 +118,8 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="../index.php">Hệ thống khảo sát</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Quản trị</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include "../includes/header.php"; ?>
+
 
     <div class="container mt-5">
         <nav aria-label="breadcrumb">
@@ -320,11 +304,7 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
         </div>
     </div>
 
-    <footer class="mt-5 py-3 bg-light text-center">
-        <div class="container">
-            <p class="mb-0">&copy; <?php echo date('Y'); ?> Hệ thống khảo sát PHP</p>
-        </div>
-    </footer>
+    <?php include "../includes/footer.php"; ?>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -375,8 +355,13 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
             const parentQuestionSelect = document.getElementById('parent_question_id');
             const parentOptionSelect = document.getElementById('parent_option_id');
             const allOptions = {};
+<<<<<<< HEAD
             
             
+=======
+
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
             // Lưu trữ dữ liệu tùy chọn
             <?php
             $options_data = array();
@@ -388,7 +373,11 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
                 mysqli_stmt_bind_param($options_stmt, "i", $question['id']);
                 mysqli_stmt_execute($options_stmt);
                 $options_result = mysqli_stmt_get_result($options_stmt);
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                 $question_options = array();
                 while ($option = mysqli_fetch_assoc($options_result)) {
                     $question_options[] = array(
@@ -396,17 +385,28 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
                         'content' => $option['content']
                     );
                 }
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                 echo "allOptions[" . $question['id'] . "] = " . json_encode($question_options) . ";\n";
             }
             ?>
 
             parentQuestionSelect.addEventListener('change', function() {
                 const questionId = this.value;
+<<<<<<< HEAD
                 
                 // Xóa các option cũ
                 parentOptionSelect.innerHTML = '<option value="">Chọn lựa chọn</option>';
                 
+=======
+
+                // Xóa các option cũ
+                parentOptionSelect.innerHTML = '<option value="">Chọn lựa chọn</option>';
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                 if (questionId && allOptions[questionId]) {
                     // Thêm các option mới
                     allOptions[questionId].forEach(option => {
@@ -415,7 +415,11 @@ $questions_dropdown = mysqli_stmt_get_result($stmt);
                         optionElement.textContent = option.content;
                         parentOptionSelect.appendChild(optionElement);
                     });
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                     parentOptionSelect.disabled = false;
                 } else {
                     parentOptionSelect.disabled = true;

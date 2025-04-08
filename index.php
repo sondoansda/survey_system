@@ -10,6 +10,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +52,24 @@ $result = mysqli_query($conn, $sql);
         </div>
     </nav>
 
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống khảo sát</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./assets/css/style1.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Thêm thanh điều hướng -->
+    <?php include './includes/header.php'; ?>
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
     <?php if (isset($_SESSION['success_message'])): ?>
         <div class="container mt-3">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -86,13 +105,21 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 
+<<<<<<< HEAD
     <footer class="mt-5 py-3 bg-light text-center">
         <div class="container">
             <p class="mb-0">&copy; <?php echo date('Y'); ?> Hệ thống khảo sát PHP</p>
         </div>
     </footer>
+=======
+    <?php @include './includes/footer.php'; ?>
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
 </html>

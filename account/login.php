@@ -29,7 +29,11 @@ unset($_SESSION['success_message']);
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+<<<<<<< HEAD
     <link href="assets/css/style.css" rel="stylesheet">
+=======
+    <link href="/survey_system/assets/css/style1.css" rel="stylesheet">
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
     <style>
         .login-form {
             max-width: 450px;
@@ -39,6 +43,7 @@ unset($_SESSION['success_message']);
             border-radius: 5px;
         }
     </style>
+<<<<<<< HEAD
 </head>
 
 <body>
@@ -57,19 +62,47 @@ unset($_SESSION['success_message']);
             </div>
         </div>
     </nav>
+=======
+    <script>
+        function checkLogin(event) {
+            // Kiểm tra trạng thái đăng nhập (giả sử bạn lưu trạng thái đăng nhập trong sessionStorage)
+            var isLoggedIn = sessionStorage.getItem('isLoggedIn'); // Hoặc có thể kiểm tra cookie, localStorage,...
+
+            if (!isLoggedIn) {
+                // Nếu chưa đăng nhập, hiển thị thông báo và ngừng chuyển hướng
+                alert('Bạn cần đăng nhập để truy cập trang quản trị.');
+
+                // Ngừng chuyển hướng
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <?php include '../includes/header.php'; ?>
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="login-form mt-5">
                     <h2 class="text-center mb-4">Đăng nhập quản trị</h2>
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                     <?php if (!empty($error_message)): ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $error_message; ?>
                         </div>
                     <?php endif; ?>
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
                     <?php if (!empty($success_message)): ?>
                         <div class="alert alert-success" role="alert">
                             <?php echo $success_message; ?>
@@ -94,11 +127,15 @@ unset($_SESSION['success_message']);
         </div>
     </div>
 
+<<<<<<< HEAD
     <footer class="mt-5 py-3 bg-light text-center">
         <div class="container">
             <p class="mb-0">&copy; <?php echo date('Y'); ?> Hệ thống khảo sát PHP</p>
         </div>
     </footer>
+=======
+    <?php include '../includes/footer.php'; ?>
+>>>>>>> 33daf9af81df39af9f6806f10c9a97e4ade11c0c
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
