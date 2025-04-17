@@ -1,16 +1,3 @@
-<?php
-// admin/index.php
-require_once "../config/db.php";
-require_once "../includes/functions.php";
-
-// Danh sách các khảo sát
-$sql = "SELECT s.*, 
-        (SELECT COUNT(DISTINCT r.user_id) FROM responses r WHERE r.survey_id = s.id AND r.completed = TRUE) as responses_count 
-        FROM surveys s 
-        ORDER BY s.created_at DESC";
-$result = mysqli_query($conn, $sql);
-
-?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -65,8 +52,8 @@ $result = mysqli_query($conn, $sql);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (mysqli_num_rows($result) > 0): ?>
-                                <?php while ($survey = mysqli_fetch_assoc($result)): ?>
+                            <?php if (count($result) > 0): ?>
+                                <?php foreach ($result as $survey): ?>
                                     <tr>
                                         <td><?php echo $survey['id']; ?></td>
                                         <td><?php echo htmlspecialchars($survey['title']); ?></td>
@@ -80,10 +67,10 @@ $result = mysqli_query($conn, $sql);
                                         <td>
                                             <a href="edit_survey.php?id=<?php echo $survey['id']; ?>" class="btn btn-sm btn-primary">Sửa</a>
                                             <a href="../results.php?survey_id=<?php echo $survey['id']; ?>" class="btn btn-sm btn-info">Xem kết quả</a>
-                                            <a href="delete-survey.php?survey_id=<?php echo $survey['id']; ?>" class="btn btn-sm btn-danger btn-delete">Xóa</a>
+                                            <a href="delete_survey.php?survey_id=<?php echo $survey['id']; ?>" class="btn btn-sm btn-danger btn-delete">Xóa</a>
                                         </td>
                                     </tr>
-                                <?php endwhile; ?>
+                                <?php endforeach;  ?>
                             <?php else: ?>
                                 <tr>
                                     <td colspan="6" class="text-center">Không có khảo sát nào.</td>

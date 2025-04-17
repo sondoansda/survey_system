@@ -1,12 +1,6 @@
 <?php
-// thank_you.php
-require_once "./config/db.php";
-require_once "./includes/functions.php";
 
-$survey_id = isset($_GET['survey_id']) ? intval($_GET['survey_id']) : 0;
-$survey_info = getSurveyInfo($conn, $survey_id);
-
-include "./includes/header.php";
+include "./view/includes/header.php";
 ?>
 
 <div class="container mt-5">
@@ -25,5 +19,4 @@ include "./includes/header.php";
         </div>
     </div>
 </div>
-
-<?php include "./includes/footer.php"; ?>
+<?php include "./view/includes/footer.php"; ?>

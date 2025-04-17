@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Bỏ qua nếu là file hoặc thư mục vật lý
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Tất cả request đưa về index.php
+RewriteRule ^(.*)$ routes.php [QSA,L]

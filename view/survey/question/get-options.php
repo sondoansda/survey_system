@@ -1,6 +1,6 @@
 <?php
 // admin/get_options.php
-require_once "./config/db.php";
+require_once "./config/Database.php";
 
 header('Content-Type: application/json');
 
@@ -26,4 +26,3 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 echo json_encode($options);
-?>

@@ -1,20 +1,6 @@
 <?php
-// results.php
-require_once "./config/db.php";
-require_once "./includes/functions.php";
 
-$survey_id = isset($_GET['survey_id']) ? intval($_GET['survey_id']) : 0;
-$survey_info = getSurveyInfo($conn, $survey_id);
-
-if (!$survey_info) {
-    header("Location: ./index.php");
-    exit();
-}
-
-$results = getSurveyResults($conn, $survey_id);
-$conn->close();
-
-include "./includes/header.php";
+include "./view/includes/header.php";
 ?>
 
 <div class="container mt-5">
@@ -89,4 +75,4 @@ include "./includes/header.php";
     });
 </script>
 
-<?php include "./includes/footer.php"; ?>
+<?php include "./view/includes/footer.php"; ?>
